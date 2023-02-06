@@ -7,7 +7,7 @@
     <title>Conect</title>
   </head>
   <body>
-    {{>button/buttonBack link="../index.hbs"}}
+    {{>button/buttonBack}}
     <main class='profile'>
       <div class='profile__header'>
         <div class="profile__content-avatar">
@@ -24,8 +24,8 @@
         {{>profilePoint/profilePoint key="Телефон" value="89876543210"}}
       </div>
       <div class="profile__buttons">
-        {{>button/button text="Изменить данные" link="./profile-edit-data.hbs" className=""}}
-        {{>button/button text="Изменить пароль" link="./profile-edit-password.hbs" className=""}}
+        {{>button/button text="Изменить данные" link="./profileEditData.hbs" className=""}}
+        {{>button/button text="Изменить пароль" link="./profileEditPassword.hbs" className=""}}
         {{>button/button text="Выйти" link="../index.hbs" className="profile__out"}}
       </div></main>
   </body>

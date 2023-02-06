@@ -8,14 +8,19 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel="stylesheet" href="../styles/index.pcss">
     <title>Document</title>
   </head>
   <body>
-    <a href="./profile/profile.hbs">Profile</a>
-    <a href="./profile/profile.hbs">fdsa</a>
-    <a href="./profile/profile.hbs">fdsa</a>
-    <a href="./profile/profile.hbs">fdsa</a>
-    <a href="./profile/profile.hbs">fdsa</a>
-    
+    <nav class="nav">
+      {{>button/button link="./profile/profile.hbs" className="nav__item" text="Profile"}}
+      {{>button/button link="./profile/profileEditData.hbs" className="nav__item" text="Edit-profile"}}
+      {{>button/button link="./profile/profileEditPassword.hbs" className="nav__item" text="Edit-password"}}
+      {{>button/button link="./profile/profile.hbs" className="nav__item" text="Messenger"}}
+      {{>button/button link="./profile/profile.hbs" className="nav__item" text="Log-In"}}
+      {{>button/button link="./profile/profile.hbs" className="nav__item" text="Log-Up"}}
+      {{>button/button link="./errors/err500.hbs" className="nav__item" text="err500"}}
+      {{>button/button link="./errors/err404.hbs" className="nav__item" text="err404"}}
+    </nav>
   </body>
 </html>
