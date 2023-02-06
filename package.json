@@ -1,0 +1,20 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel ./src/pages/index.hbs --no-cache",
+    "build": "parcel build ./src/pages/index.hbs --no-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "parcel": "^2.8.3"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}
