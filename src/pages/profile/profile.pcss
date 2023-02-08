@@ -6,73 +6,73 @@
   height: 100%;
   padding: 50px 20px 0 20px;
   margin: 0 auto;
-}
-.profile__header {
-  width: 180px;
-  margin: 0 auto 40px auto;
-}
-.profile__avatar-btn {
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  border: none;
-  overflow: hidden;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: all 0.2s ease-in-out;
-}
-.profile__avatar-btn::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 180px;
-  height: 180px;
-  background: url(../../../static/edit-btn.svg) center/45px no-repeat;
-  filter: invert(1);
-}
-.profile__avatar-input {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 180px;
-  height: 180px;
-  z-index: 2;
-  background: none;
-  opacity: 0;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.profile__avatar {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: -1;
-}
-.profile__name {
-  width: 100%;
-  font-weight: 700;
-  font-size: 32px;
-  text-align: center;
-  margin: 10px 0 0 0;
-  padding: 0;
-}
-.profile__buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 20px 0 0 0;
-}
-.profile__out {
-  background:  var(--color-red);
-}
-.profile__out:hover {
-  background: var(--color-red-lit);
+  &__header {
+    width: 180px;
+    margin: 0 auto 40px auto;
+  }
+  &__avatar-btn {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease-in-out;
+  }
+  &__avatar-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 180px;
+    background: url(../../../static/edit-btn.svg) center/45px no-repeat;
+    filter: invert(1);
+  }
+  &__avatar-input {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 180px;
+    z-index: 2;
+    background: none;
+    opacity: 0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  &__avatar {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  &__name {
+    width: 100%;
+    font-weight: 700;
+    font-size: 32px;
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 0 0 0;
+  }
+  &__out {
+    background: var(--color-red);
+    &:hover {
+      background: var(--color-red-lit);
+    }
+  }
 }

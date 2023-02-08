@@ -1,0 +1,13 @@
+<li class="chat">
+  <a href='./messengerActive.hbs#last' class='chat__container'>
+    <img src={{avatar}} alt="аватар {{name}}" class="chat__avatar">
+    <div class="chat__text">
+      <h3 class="chat__name">{{name}}</h3>
+      <p class="chat__mess">{{text}}</p>
+    </div>
+    {{#if messageCount}}
+      <p class="chat__count">{{messageCount}}</p>
+    {{/if}}
+    <span class="chat__time">{{messageTime}}</span>
+  </a>
+</li>

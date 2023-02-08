@@ -1,0 +1,65 @@
+.message {
+  position: relative;
+  max-width: 65%;
+  padding: 12px 12px 28px 12px;
+  margin: 0 0 16px 0;
+  border-radius: 24px 24px 24px 0;
+  background: var(--color-dark-purple);
+  &_own {
+    margin-left: auto;
+    border-radius: 24px 24px 0 24px;
+    background: var(--color-purple-lit);
+  }
+  &_not-own {
+    margin-right: auto;
+    background: var(--color-purple);
+  }
+  &__text {
+    padding: 0;
+    margin: 0 0 5px 0;
+  }
+  &__info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 20px 6px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &_own {
+      justify-content: flex-end;
+    }
+  }
+  &__sender {
+    font-size: 14px;
+    color: var(--color-light);
+    padding: 0;
+    margin: 0;
+  }
+  &__time {
+    font-size: 14px;
+    color: var(--color-light);
+    background-color: inherit;
+  }
+  &__looked {
+    position: relative;
+    width: 16px;
+    height: 21px;
+    margin: 0 0 0 8px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 16px;
+      height: 21px;
+      background: url(../../../static/no-read.svg) 0/ contain no-repeat;
+      filter: invert(0.8)
+    }
+    &_active::before {
+      width: 24px;
+      background: url(../../../static/read.svg) 0 / contain no-repeat;
+    } 
+  }
+}
