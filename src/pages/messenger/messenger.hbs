@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./messenger.pcss">
+  <title>Document</title>
+</head>
+<body>
+  {{>button/buttonBack}}
+  <main class="content">
+
+    <div class="chats">
+      <a href="../profile/profile.hbs" class="chats__to-profile changetheme">Профиль</a>
+      <input class="search chats__search" placeholder="Найти диалог">
+      <ul class="chats__list">
+        {{>chat/chat avatar="../../../static/avatar.jpg" name="Андрей" owner="0" text="Бла блалала бла" messageTime="12:12" messageCount="3"}}
+        {{>chat/chat avatar="../../../static/avatar.jpg" name="Не Андрей" owner="1" text="Блаdалала блd" messageTime="11:02" messageCount="2"}}
+        {{>chat/chat avatar="../../../static/avatar.jpg" name="Is Not Андрей" owner="0" text="Бsadfла" messageTime="10:56" messageCount=""}}
+        {{>chat/chat avatar="../../../static/avatar.jpg" name="Снова Андрей" owner="0" text="Бла блалаfsadfdбла" messageTime="пт" messageCount=""}}
+        {{>chat/chat avatar="../../../static/avatar.jpg" name="Cупер-пупер-длинный Андрей" owner="1" text="Блasdfasdasdfasdfsadffа" messageTime="ср" messageCount="1"}}
+        {{>chat/chat avatar="../../../static/avatar.jpg" name="Вова" owner="0" text=":)" messageTime="24 февраля 2022" messageCount=""}}
+      </ul>
+    </div>
+
+    <div class="dialog">
+      <h1 class="dialog__helper">Выберите диалог</h1>
+    </div>
+  </main>
+</body>
+</html>
