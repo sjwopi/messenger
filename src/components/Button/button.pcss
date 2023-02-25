@@ -1,0 +1,21 @@
+.button {
+  display: block;
+  background: var(--color-purple);
+  width: 220px;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  color: var(--color-white);
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background: var(--color-purple-lit);
+  }
+}
+@media screen and (max-width: 800px) {
+  .button {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,46 @@
+@import url(./normalize.pcss);
+@import url(../../static/fonts/font-inter.pcss);
+
+@import url(../Components/Button/button.pcss);
+@import url(../Components/ButtonBack/buttonBack.pcss);
+@import url(../Components/ProfilePoint/profilePoint.pcss);
+@import url(../Components/ProfilePointEdit/profilePointEdit.pcss);
+@import url(../Components/Input/input.pcss);
+@import url(../Components/Button/button.pcss);
+
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  color: var(--color-white);
+}
+body {
+  --color-black: #000;
+  --color-red: #aa0000;
+  --color-red-lit: #ff0000;
+  --color-dark-purple: #001a32;
+  --color-purple: #003564;
+  --color-purple-lit: #006aeb;
+  --color-light: #ddd;
+  --color-white: #fff;
+  --color-for-dialog: #112;
+
+  color: var(--color-white);
+  background-color: var(--color-dark-purple);
+}
+
+/* для светлой темы */
+
+/* body {
+  --color-black: #000;
+  --color-red: #ff8787;
+  --color-red-lit: #ff0000;
+  --color-dark-purple: #fff;
+  --color-purple: #ddeeff;
+  --color-purple-lit: #aaccff;
+  --color-light: #999;
+  --color-white: #000;
+  --color-for-dialog: #fff;
+}
+.changetheme::before {
+  filter: invert(0.3) !important;
+} */
