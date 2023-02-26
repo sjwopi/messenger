@@ -1,8 +1,3 @@
-@import url(../../styles/index.pcss);
-@import url(../../partials/chat/chat.pcss);
-@import url(../../partials/message/message.pcss);
-@import url(../../partials/headchat/headchat.pcss);
-
 .content {
   display: grid;
   margin: 0 0 0 55px;
@@ -49,9 +44,10 @@
 .dialog {
   height: 100vh;
   width: calc(100% - 445px);
+  max-width: 1400px;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 446px;
   border-left: 1px solid var(--color-white);
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -70,6 +66,8 @@
     z-index: 2;
   }
   &__messages {
+    wiidth: 100%;
+    height: 100%;
     list-style: none;
     padding: 120px 30px 70px 30px;
     margin: 0;
@@ -78,8 +76,9 @@
   &__inputs {
     position: fixed;
     top: calc(100% - 70px);
-    right: 0;
+    left: 446px;
     width: calc(100% - 446px);
+    max-width: 1400px;
     height: 70px;
     background: var(--color-dark-purple);
     display: flex;
