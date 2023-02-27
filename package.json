@@ -6,7 +6,7 @@
     "dev": "parcel ./src/index.html --no-cache --open",
     "build": "parcel build ./src/index.html --no-cache",
     "server": "node ./server.js",
-    "start": "npm i && npm run build && node ./server.js --open"
+    "start": "npm run build && node ./server.js --open"
   },
   "keywords": [],
   "author": "",
