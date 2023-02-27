@@ -1,9 +1,11 @@
 import Block from '../../utils/Block';
 import renderDOM from '../../utils/renderDOM';
+import validate from '../../utils/validation';
 
 import Button from '../../components/Button';
 import ButtonBack from '../../components/ButtonBack';
 import Input from '../../components/Input';
+import ButtonSubmit from '../../components/ButtonSubmit';
 
 export default class SignUpPage extends Block {
   constructor(props: any) {
@@ -39,15 +41,28 @@ export default class SignUpPage extends Block {
       })),
       (this.children.inputPhone = new Input({
         name: 'phone',
-        type: 'text',
+        type: 'tel',
         placeholder: 'Телефон',
       })),
 
-      (this.children.btnSubmit = new Button({
+      (this.children.btnSubmit = new ButtonSubmit({
         text: 'Зарегистрироваться',
+        type: 'submit',
         events: {
-          click: () => {
-            renderDOM('profile');
+          click: (e) => {
+            e.preventDefault();
+            if ((this.children.btnSubmit as ButtonSubmit).valid) {
+              const value = {
+                login: (this.children.inputLogin as Input).value,
+                firstName: (this.children.inputFirstName as Input).value,
+                secondName: (this.children.inputSecondName as Input).value,
+                email: (this.children.inputEmail as Input).value,
+                password: (this.children.inputPassword as Input).value,
+                phone: (this.children.inputPhone as Input).value,
+              };
+              console.log(value);
+              renderDOM('profile');
+            }
           },
         },
         className: 'form__submit',
@@ -57,6 +72,8 @@ export default class SignUpPage extends Block {
         events: {
           click: () => {
             renderDOM('signIn');
+            const Validator = new validate();
+            Validator.enableValidation();
           },
         },
         className: 'form__redirect',

@@ -1,9 +1,11 @@
 import Block from '../../utils/Block';
 import renderDOM from '../../utils/renderDOM';
+import validate from '../../utils/validation';
 
 import Button from '../../components/Button';
 import ButtonBack from '../../components/ButtonBack';
 import Input from '../../components/Input';
+import ButtonSubmit from '../../components/ButtonSubmit';
 
 export default class SignInPage extends Block {
   constructor(props: any) {
@@ -11,7 +13,6 @@ export default class SignInPage extends Block {
   }
   init() {
     (this.children.buttonBack = new ButtonBack()),
-
       (this.children.inputLogin = new Input({
         name: 'login',
         type: 'text',
@@ -22,12 +23,21 @@ export default class SignInPage extends Block {
         type: 'password',
         placeholder: 'Пароль',
       })),
-
-      (this.children.btnSubmit = new Button({
+      (this.children.btnSubmit = new ButtonSubmit({
         text: 'Войти',
+        type: 'submit',
         events: {
-          click: () => {
-            renderDOM('profile');
+          click: (e) => {
+            e.preventDefault();
+            
+            if ((this.children.btnSubmit as ButtonSubmit).valid) {
+              const value = {
+                login: (this.children.inputLogin as Input).value,
+                password: (this.children.inputPassword as Input).value,
+              };
+              console.log(value);
+              renderDOM('profile');
+            }
           },
         },
         className: 'form__submit',
@@ -37,10 +47,12 @@ export default class SignInPage extends Block {
         events: {
           click: () => {
             renderDOM('signUp');
+            const Validator = new validate();
+            Validator.enableValidation();
           },
         },
         className: 'form__redirect',
-      }))
+      }));
   }
   render() {
     return (

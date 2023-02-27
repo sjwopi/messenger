@@ -1,5 +1,6 @@
 import Block from '../../utils/Block';
 import renderDOM from '../../utils/renderDOM';
+import validate from '../../utils/validation';
 
 import Button from '../../components/Button';
 
@@ -35,12 +36,20 @@ export default class HomePage extends Block {
       })),
       (this.children.navButton6 = new Button({
         text: 'Sign-In',
-        events: { click: () => {renderDOM('signIn')} },
+        events: { click: () => {
+          renderDOM('signIn');
+          const Validator = new validate();
+          Validator.enableValidation();
+        } },
         className: 'nav__item',
       })),
       (this.children.navButton7 = new Button({
         text: 'Sign-Up',
-        events: { click: () => {renderDOM('signUp')} },
+        events: { click: () => {
+          renderDOM('signUp');
+          const Validator = new validate();
+          Validator.enableValidation();
+        } },
         className: 'nav__item',
       })),
       (this.children.navButton8 = new Button({

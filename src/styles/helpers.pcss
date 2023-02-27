@@ -4,11 +4,24 @@
 @import url(../Components/Button/button.pcss);
 @import url(../Components/ButtonBack/buttonBack.pcss);
 @import url(../Components/ProfilePoint/profilePoint.pcss);
-@import url(../Components/ProfilePointEdit/profilePointEdit.pcss);
-@import url(../Components/Input/input.pcss);
-@import url(../Components/Chat/chat.pcss);
-@import url(../Components/Headchat/headchat.pcss);
-@import url(../Components/Message/message.pcss);
+
+@keyframes valid {
+  from {
+    transform: translateX(0) rotate(0deg);
+  }
+  33% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  66% {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: translateX(0) rotate(0deg);
+  }
+}
 
 * {
   font-family: 'Inter', sans-serif;
@@ -31,7 +44,7 @@ body {
 }
 /* для светлой темы */
 
-body {
+/* body {
   --color-black: #000;
   --color-red: #ff8787;
   --color-red-lit: #ff0000;
@@ -44,4 +57,4 @@ body {
 }
 .changetheme::before {
   filter: invert(0.3) !important;
-}
+} */

@@ -7,7 +7,7 @@ export default class ButtonBack extends Block {
   }
   render() {
     // language=hbs
-    return ( `<button class='button-back changetheme'></button>` );
+    return ( `<button type='button' class='button-back changetheme'></button>` );
   }
 }
 
