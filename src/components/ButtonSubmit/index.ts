@@ -5,7 +5,6 @@ interface ButtonSubmitProps {
   type: string;
   events: {
     click: (e: any) => void; 
-    submit?: (e: any) => void; 
   };
   className?: string;
 }
@@ -15,7 +14,7 @@ export default class ButtonSubmit extends Block {
     super(props);
   }
   get valid() {
-    return !(this.element as HTMLInputElement).disabled;
+    return !(this.element as HTMLInputElement).classList.contains('button_inactive');
   }
   render() {
     // language=hbs

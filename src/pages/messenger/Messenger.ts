@@ -6,9 +6,6 @@ import Chat from '../../components/Chat';
 import defaultAvatar from '../../../static/avatar.jpg';
 
 export default class MessengerPage extends Block {
-  constructor(props: any) {
-    super(props);
-  }
   init() {
     (this.children.buttonBack = new ButtonBack()),
       (this.children.chat1 = new Chat({

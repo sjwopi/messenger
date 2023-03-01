@@ -1,6 +1,6 @@
 import Block from '../../utils/Block';
 import renderDOM from '../../utils/renderDOM';
-import validate from '../../utils/validation';
+import Validate from '../../utils/Validate';
 
 import Button from '../../components/Button';
 import ButtonBack from '../../components/ButtonBack';
@@ -8,9 +8,6 @@ import Input from '../../components/Input';
 import ButtonSubmit from '../../components/ButtonSubmit';
 
 export default class SignInPage extends Block {
-  constructor(props: any) {
-    super(props);
-  }
   init() {
     (this.children.buttonBack = new ButtonBack()),
       (this.children.inputLogin = new Input({
@@ -29,7 +26,7 @@ export default class SignInPage extends Block {
         events: {
           click: (e) => {
             e.preventDefault();
-            
+
             if ((this.children.btnSubmit as ButtonSubmit).valid) {
               const value = {
                 login: (this.children.inputLogin as Input).value,
@@ -47,7 +44,7 @@ export default class SignInPage extends Block {
         events: {
           click: () => {
             renderDOM('signUp');
-            const Validator = new validate();
+            const Validator = new Validate('.form_sign-up');
             Validator.enableValidation();
           },
         },
@@ -59,7 +56,7 @@ export default class SignInPage extends Block {
       // language=hbs
       `<div>
         {{{buttonBack}}}
-        <form class="form">
+        <form class="form form_sign-in">
           <h1 class="form__title">Авторизация</h1>
           {{{inputLogin}}}
           {{{inputPassword}}}

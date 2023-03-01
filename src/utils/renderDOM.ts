@@ -1,13 +1,13 @@
 import HomePage from "../pages/Home/Home";
-import ProfilePage from "../pages/Profile/Profile";
-import ProfileEditDataPage from "../pages/Profile/ProfileEditData";
-import ProfileEditPasswordPage from "../pages/Profile/ProfileEditPassword";
-import SignInPage from "../pages/Sign/SignIn";
-import SignUpPage from "../pages/Sign/SignUp";
+import ProfilePage from "../pages/profile/Profile";
+import ProfileEditDataPage from "../pages/profile/ProfileEditData";
+import ProfileEditPasswordPage from "../pages/profile/ProfileEditPassword";
+import SignInPage from "../pages/sign/SignIn";
+import SignUpPage from "../pages/sign/SignUp";
 import Error404 from "../pages/Error/Error404";
 import Error500 from "../pages/Error/Error500";
-import MessengerPage from "../pages/Messenger/Messenger";
-import MessengeActivePage from "../pages/Messenger/MessengerActive";
+import MessengerPage from "../pages/messenger/Messenger";
+import MessengeActivePage from "../pages/messenger/MessengerActive";
 
 
 const ROUTES = {

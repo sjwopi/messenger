@@ -1,5 +1,6 @@
 import Block from '../../utils/Block';
 import renderDOM from '../../utils/renderDOM';
+import Validate from '../../utils/Validate';
 
 import Button from '../../components/Button';
 import ButtonBack from '../../components/ButtonBack';
@@ -8,9 +9,6 @@ import ProfilePoint from '../../components/ProfilePoint';
 import defaultAvatar from '../../../static/avatar.jpg';
 
 export default class ProfilePage extends Block {
-  constructor(props: any) {
-    super(props);
-  }
   init() {
     (this.children.buttonBack = new ButtonBack()),
       (this.children.pointEmail = new ProfilePoint({
@@ -39,12 +37,20 @@ export default class ProfilePage extends Block {
       })),
       (this.children.btnEditData = new Button({
         text: 'Изменить данные',
-        events: { click: () => {renderDOM('editProfile')} },
+        events: { click: () => {
+          renderDOM('editProfile');
+          const Validator = new Validate('.form_edit-profile');
+          Validator.enableValidation();
+        }, },
         className: '',
       })),
       (this.children.btnEditPassword = new Button({
         text: 'Измменить пароль',
-        events: { click: () => {renderDOM('editPassword')} },
+        events: { click: () => {
+          renderDOM('editPassword');
+          const Validator = new Validate('.form_edit-password');
+          Validator.enableValidation();
+        }, },
         className: '',
         
       })),

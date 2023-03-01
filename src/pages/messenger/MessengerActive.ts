@@ -4,13 +4,13 @@ import ButtonBack from '../../components/ButtonBack';
 import Chat from '../../components/Chat';
 import HeadChat from '../../components/Headchat';
 import Message from '../../components/Message';
+import Input from '../../components/Input';
+import InputMess from '../../components/InputMess';
+import ButtonSubmit from '../../components/ButtonSubmit';
 
 import defaultAvatar from '../../../static/avatar.jpg';
 
 export default class MessengeActivePage extends Block {
-  constructor(props: any) {
-    super(props);
-  }
   init() {
     (this.children.buttonBack = new ButtonBack()),
       (this.children.chat1 = new Chat({
@@ -77,6 +77,29 @@ export default class MessengeActivePage extends Block {
         sender: '',
         time: '12:12',
         isActive: ''
+      })),
+      (this.children.inputMess = new InputMess({
+        name: 'message',
+        type: 'message',
+        placeholder: 'Введите сообщение',
+        className: 'dialog__input dialog__input_text'
+      })),
+      (this.children.btnSubmit = new ButtonSubmit({
+        text: '',
+        type: 'submit',
+        events: {
+          click: (e) => {
+            e.preventDefault();
+
+            if ((this.children.btnSubmit as ButtonSubmit).valid) {
+              const value = {
+                message: (this.children.inputMess as Input).value,
+              };
+              console.log(value);
+            }
+          },
+        },
+        className: 'form__submit dialog__input dialog__input_submit',
       }))
   }
   render() {
@@ -111,11 +134,12 @@ export default class MessengeActivePage extends Block {
               {{{message2}}}
               {{{message3}}}
             </ul>
-            <div class="dialog__inputs">
+            <div class="dialog__inputs form_messages">
               <input class="dialog__input dialog__input_smiley changetheme" type="button">
               <input class="dialog__input dialog__input_file" type="file">
-              <input class="dialog__input dialog__input_text" name="message" type="text" placeholder="Введите сообщение">
-              <input class="dialog__input dialog__input_submit" type="submit" placeholder="" value="">
+              {{{inputMess}}}
+              {{{btnSubmit}}}
+           
 
             </div>
           </div>

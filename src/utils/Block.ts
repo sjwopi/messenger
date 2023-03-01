@@ -2,7 +2,8 @@ import EventBus from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from "handlebars";
 
-export default class Block {
+export default // @ts-ignore
+abstract class Block<Props extends Record<string, any> = unknown> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -12,7 +13,7 @@ export default class Block {
   public id = nanoid(6);
   public children: Record<string, Block>;
 
-  protected props: any;
+  protected props: Props;
 
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
@@ -30,25 +31,36 @@ export default class Block {
   }
 
   _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {};
+    // @ts-ignore
+    const props: Props = {};
     const children: Record<string, Block> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
       } else {
+        // @ts-ignore
         props[key] = value;
       }
     });
     return { props, children };
   }
   _addEvents() {
+    // @ts-ignore
     const {events = {}} = this.props as { events: Record<string, ()=>void> };
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName])
     });
   }
+  _removeEvents() {
+    const events: Record<string, () => void> = (this.props as Props).events;
 
+    if (!events || !this._element) return;
+
+    Object.entries(events).forEach(([event, listener]) => {
+      this._element?.removeEventListener(event, listener);
+    });
+  }
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -83,7 +95,7 @@ export default class Block {
     return true;
   }
 
-  setProps = (nextProps: any ) => {
+  setProps = (nextProps: Props ) => {
     if (!nextProps) {
       return;
     }
@@ -100,6 +112,7 @@ export default class Block {
     const newElement = this.compile(template, this.props).firstElementChild as HTMLElement;
 
     if (this._element) {
+      this._removeEvents();
       this._element.replaceWith(newElement);
     }
     this._element = newElement;
@@ -138,17 +151,19 @@ export default class Block {
     return temp.content;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
       get(target, prop) {
+        // @ts-ignore
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target, prop, value) {
+        // @ts-ignore
         target[prop] = value;
-        
+        // @ts-ignore
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
         return true;
       },

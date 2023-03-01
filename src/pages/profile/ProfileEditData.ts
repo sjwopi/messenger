@@ -6,11 +6,10 @@ import ButtonBack from '../../components/ButtonBack';
 import ProfilePointEdit from '../../components/ProfilePointEdit';
 
 import defaultAvatar from '../../../static/avatar.jpg';
+import ButtonSubmit from '../../components/ButtonSubmit';
+import Input from '../../components/Input';
 
 export default class ProfileEditDataPage extends Block {
-  constructor(props: any) {
-    super(props);
-  }
   init() {
     (this.children.buttonBack = new ButtonBack()),
       (this.children.pointEmail = new ProfilePointEdit({
@@ -49,10 +48,28 @@ export default class ProfileEditDataPage extends Block {
         name: 'phone',
         type: 'text'
       })),
-      (this.children.btnEditSave = new Button({
+      (this.children.btnEditSave = new ButtonSubmit({
         text: 'Сохранить',
-        events: { click: () => {renderDOM('profile')} },
-        className: '',
+        type: 'submit',
+        events: {
+          click: (e) => {
+            e.preventDefault();
+
+            if ((this.children.btnSubmit as ButtonSubmit).valid) {
+              const value = {
+                email: (this.children.inputEmail as Input).value,
+                login: (this.children.inputLogin as Input).value,
+                first_name: (this.children.inputFirstName as Input).value,
+                second_name: (this.children.inputSecondName as Input).value,
+                password: (this.children.inputPassword as Input).value,
+                phone: (this.children.inputPhone as Input).value,
+              };
+              console.log(value);
+              renderDOM('profile');
+            }
+          },
+        },
+        className: ''
       })),
       (this.children.btnOut = new Button({
         text: 'Выйти',
@@ -74,17 +91,20 @@ export default class ProfileEditDataPage extends Block {
             <h1 class='profile__name'>&ensp;</h1>
           </div>
           <div class="profile__info">
-            {{{pointEmail}}}
-            {{{pointLogin}}}
-            {{{pointName}}}
-            {{{pointSurname}}}
-            {{{pointNickname}}}
-            {{{pointPhone}}}
+            <form class="form_edit-profile">
+              {{{pointEmail}}}
+              {{{pointLogin}}}
+              {{{pointName}}}
+              {{{pointSurname}}}
+              {{{pointNickname}}}
+              {{{pointPhone}}}
+              <div class="profile__buttons">
+                {{{btnEditSave}}}
+                {{{btnOut}}}
+              </div>
+            </form>
           </div>
-          <div class="profile__buttons">
-            {{{btnEditSave}}}
-            {{{btnOut}}}
-          </div></main>
+        </main>
       </div>`
     );
   }

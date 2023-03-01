@@ -4,6 +4,7 @@ interface InputProps {
   placeholder: string;
   name: string;
   type: string;
+  className?: string; 
 }
 
 export default class Input extends Block {
@@ -21,11 +22,11 @@ export default class Input extends Block {
         <input
           type={{type}}
           name={{name}}
-          class='introd__input form-input'
+          class='introd__input input-validation {{className}}'
           id={{name}}
           required
         />
-        <span class="introd__input-error {{type}}-error"></span>
+        <span class="span-error {{name}}-error"></span>
       </div>
     `;
   }

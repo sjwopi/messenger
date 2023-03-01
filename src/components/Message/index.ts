@@ -11,7 +11,6 @@ export default class Message extends Block {
     super(props);
   }
   render() {
-    console.log(this.props)
     if (this.props.sender) {
       return `
       <div>

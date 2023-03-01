@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel ./src/index.html --no-cache --open",
+    "dev": "parcel ./src/index.html --no-cache",
     "build": "parcel build ./src/index.html --no-cache",
     "server": "node ./server.js",
-    "start": "npm run build && node ./server.js --open"
+    "start": "npm run build && node ./server.js"
   },
   "keywords": [],
   "author": "",

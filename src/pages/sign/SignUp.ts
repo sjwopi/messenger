@@ -1,6 +1,6 @@
 import Block from '../../utils/Block';
 import renderDOM from '../../utils/renderDOM';
-import validate from '../../utils/validation';
+import Validate from '../../utils/Validate';
 
 import Button from '../../components/Button';
 import ButtonBack from '../../components/ButtonBack';
@@ -8,12 +8,8 @@ import Input from '../../components/Input';
 import ButtonSubmit from '../../components/ButtonSubmit';
 
 export default class SignUpPage extends Block {
-  constructor(props: any) {
-    super(props);
-  }
   init() {
     (this.children.buttonBack = new ButtonBack()),
-
       (this.children.inputFirstName = new Input({
         name: 'first_name',
         type: 'text',
@@ -44,7 +40,6 @@ export default class SignUpPage extends Block {
         type: 'tel',
         placeholder: 'Телефон',
       })),
-
       (this.children.btnSubmit = new ButtonSubmit({
         text: 'Зарегистрироваться',
         type: 'submit',
@@ -72,20 +67,20 @@ export default class SignUpPage extends Block {
         events: {
           click: () => {
             renderDOM('signIn');
-            const Validator = new validate();
+            const Validator = new Validate('.form_sign-in');
             Validator.enableValidation();
           },
         },
         className: 'form__redirect',
-      }))
+      }));
   }
   render() {
     return (
       // language=hbs
       `<div>
         {{{buttonBack}}}
-        <form class="form">
-          <h1 class="form__title">Авторизация</h1>
+        <form class="form form_sign-up">
+          <h1 class="form__title">Регистрация</h1>
           {{{inputFirstName}}}
           {{{inputSecondName}}}
           {{{inputLogin}}}
