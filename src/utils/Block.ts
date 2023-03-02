@@ -2,8 +2,7 @@ import EventBus from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from "handlebars";
 
-export default // @ts-ignore
-abstract class Block<Props extends Record<string, any> = unknown> {
+export default class Block<Props extends Record<string, any>={}> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -31,7 +30,6 @@ abstract class Block<Props extends Record<string, any> = unknown> {
   }
 
   _getChildrenAndProps(childrenAndProps: any) {
-    // @ts-ignore
     const props: Props = {};
     const children: Record<string, Block> = {};
 
@@ -39,15 +37,14 @@ abstract class Block<Props extends Record<string, any> = unknown> {
       if (value instanceof Block) {
         children[key] = value;
       } else {
-        // @ts-ignore
         props[key] = value;
       }
     });
     return { props, children };
   }
   _addEvents() {
-    // @ts-ignore
-    const {events = {}} = this.props as { events: Record<string, ()=>void> };
+    
+    const {events = {}} = this.props;
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName])
     });
@@ -156,14 +153,13 @@ abstract class Block<Props extends Record<string, any> = unknown> {
 
     return new Proxy(props, {
       get(target, prop) {
-        // @ts-ignore
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
-        // @ts-ignore
+      set(target:Record<string, any>, prop:string, value:unknown) {
+        
         target[prop] = value;
-        // @ts-ignore
+        
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
         return true;
       },

@@ -54,10 +54,19 @@ export default class Validate {
     const isFormValid = this.inputList.some(item=>!validity[item.name](item.value))
     if (isFormValid) {
       this.buttonSubmit.classList.add('button_inactive');
+      this.buttonSubmit.disabled = true;
     } else {
       this.buttonSubmit.classList.remove('button_inactive');
+      this.buttonSubmit.disabled = false;
     }
   }
+  
+  _validateInput(inputElement: HTMLInputElement, evt: Event) {
+    evt.preventDefault();
+    this.toggleInputError(inputElement);
+    this.toggleButtonState();
+  }
+
   setEventListeners() {
     this.buttonSubmit.addEventListener('click', (evt) => {
       evt.preventDefault();
@@ -69,19 +78,13 @@ export default class Validate {
 
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('focus', (evt) => {
-        evt.preventDefault();
-        this.toggleInputError(inputElement);
-        this.toggleButtonState();
+        this._validateInput(inputElement, evt)
       });
       inputElement.addEventListener('blur', (evt) => {
-        evt.preventDefault();
-        this.toggleInputError(inputElement);
-        this.toggleButtonState();
+        this._validateInput(inputElement, evt)
       });
       inputElement.addEventListener('input', (evt) => {
-        evt.preventDefault();
-        this.toggleInputError(inputElement);
-        this.toggleButtonState();
+        this._validateInput(inputElement, evt)
       });
     });
   }

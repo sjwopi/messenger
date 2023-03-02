@@ -101,17 +101,19 @@ export default class HomePage extends Block {
   render() {
     return (
       // language=hbs
-      `<ul class='nav'>
-        <li>{{{navButton1}}}</li>
-        <li>{{{navButton2}}}</li>
-        <li>{{{navButton3}}}</li>
-        <li>{{{navButton4}}}</li>
-        <li>{{{navButton5}}}</li>
-        <li>{{{navButton6}}}</li>
-        <li>{{{navButton7}}}</li>
-        <li>{{{navButton8}}}</li>
-        <li>{{{navButton9}}}</li
-      </ul>`
+      `<nav class='nav'>
+        <ul class='nav__list'>
+          <li>{{{navButton1}}}</li>
+          <li>{{{navButton2}}}</li>
+          <li>{{{navButton3}}}</li>
+          <li>{{{navButton4}}}</li>
+          <li>{{{navButton5}}}</li>
+          <li>{{{navButton6}}}</li>
+          <li>{{{navButton7}}}</li>
+          <li>{{{navButton8}}}</li>
+          <li>{{{navButton9}}}</li
+        </ul>
+      </nav>`
     );
   }
 }

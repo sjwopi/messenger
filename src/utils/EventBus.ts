@@ -19,7 +19,7 @@ export class EventBus {
     );
   }
 
-  emit(event: string, ...args: (()=>void)[]) {
+  emit(event: string, ...args: any) {
     if (!this.listeners[event]) {
       return;
     }
