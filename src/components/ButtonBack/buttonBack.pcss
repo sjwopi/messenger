@@ -1,0 +1,35 @@
+.button-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 55px;
+  height: 100%;
+  border: none;
+  border-right: 1px var(--color-white) solid;
+  background-color: var(--color-purple);
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background: var(--color-purple-lit);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 100%;
+    background: url(../../../static/back.svg) center/35px no-repeat;
+    filter: invert(1);
+  }
+}
+@media screen and (max-width: 600px) {
+  .button-back {
+    top: 0;
+    width: 65px;
+    height: 70px;
+    border-radius: 0 0 35px 0;
+    border-bottom: 1px var(--color-white) solid;
+    border-top: 1px var(--color-white) solid;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "ignorePatterns": ["/dist", "*/*.min.js", "/node_modules"],
+  "extends": "airbnb",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "max-len": [2, 100],
+    "import/prefer-default-export": "off",
+    "no-console": "warn",
+    "@typescript-eslint/no-unused-vars": 2
+  }
+}
